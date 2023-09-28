@@ -13,7 +13,7 @@ const Header = () => {
     <Flex
       as="header"
       justifyContent="center"
-      h="95px"
+      h="75px"
       bg="transparent"
       borderBottom="1px solid #9191913d"
     >
