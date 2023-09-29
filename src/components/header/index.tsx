@@ -7,8 +7,12 @@ import {
   ListItem,
   Button,
 } from "@chakra-ui/react"
+import { useState } from "react"
+import { Navigate, Link } from "react-router-dom"
 
 const Header = () => {
+  const [navigate, setNavigate] = useState(false)
+
   return (
     <Flex
       as="header"
@@ -27,7 +31,13 @@ const Header = () => {
         >
           <Flex as="div" h="100%" alignItems="center">
             <Box as="div">
-              <Image src="../assets/header/logo.png" w="130px" />
+              <Link to="/">
+                <Image
+                  src="../../../assets/header/logo.png"
+                  w="130px"
+                  cursor="pointer"
+                />
+              </Link>
             </Box>
 
             <UnorderedList

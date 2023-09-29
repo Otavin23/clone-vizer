@@ -16,6 +16,8 @@ import { RadioCard } from "../../components/radio"
 import useSWR from "swr"
 import axios from "axios"
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { Header } from "../../components/header"
 
 const Home = () => {
   const [page, setPage] = useState(1)
@@ -27,7 +29,6 @@ const Home = () => {
       return data
     }
   )
-
   console.log(data)
 
   const options = [
@@ -51,10 +52,10 @@ const Home = () => {
     }
   }
 
-  console.log(page)
-
   return (
     <>
+      <Header />
+
       <Flex
         as="main"
         justifyContent="center"
@@ -194,74 +195,77 @@ const Home = () => {
                       transform: "scale(1.1)",
                     }}
                   >
-                    <Box
-                      as="div"
-                      w="250px"
-                      h="350px"
-                      bg={`linear-gradient(0deg,rgba(0,0,0,.9) 0,rgba(0,0,0,.7) 37%,rgba(0,0,0,0) 100%),url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`}
-                      bgSize="cover"
-                      borderRadius="1rem"
-                    />
-                    <Box as="div" pos="absolute" bottom="1px" p="1rem">
-                      <Heading
-                        as="h3"
-                        color="#ffffff"
-                        fontSize="20px"
-                        fontWeight="600"
-                      >
-                        {movie.original_title}
-                      </Heading>
+                    <Link to={`/filme/online/${movie.id}/${page}`}>
+                      <Box
+                        as="div"
+                        w="250px"
+                        h="350px"
+                        bg={`linear-gradient(0deg,rgba(0,0,0,.9) 0,rgba(0,0,0,.7) 37%,rgba(0,0,0,0) 100%),url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`}
+                        bgSize="cover"
+                        borderRadius="1rem"
+                      />
 
-                      <Flex as="div" justifyContent="space-between" mt="1rem">
-                        <Text
-                          as="span"
-                          color="#adadad"
-                          fontWeight="700"
-                          fontSize="13px"
-                          opacity="0.5"
+                      <Box as="div" pos="absolute" bottom="1px" p="1rem">
+                        <Heading
+                          as="h3"
+                          color="#ffffff"
+                          fontSize="20px"
+                          fontWeight="600"
                         >
-                          {movie.release_date.substr(0, 4)}
-                        </Text>
+                          {movie.original_title}
+                        </Heading>
 
-                        <Text
-                          as="span"
-                          display="flex"
-                          alignItems="center"
-                          color="#adadad"
-                          fontWeight="700"
-                          fontSize="13px"
-                          opacity="0.5"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            width="15px"
-                            height="15px"
-                            style={{
-                              marginRight: "0.5rem",
-                            }}
+                        <Flex as="div" justifyContent="space-between" mt="1rem">
+                          <Text
+                            as="span"
+                            color="#adadad"
+                            fontWeight="700"
+                            fontSize="13px"
+                            opacity="0.5"
                           >
-                            <path
-                              xmlns="http://www.w3.org/2000/svg"
-                              d="M23.479 29.691a2.325 2.325 0 0 1-1.089-.27l-6.233-3.276a.333.333 0 0 0-.314 0l-6.232 3.276a2.338 2.338 0 0 1-3.393-2.465l1.19-6.939a.337.337 0 0 0-.1-.3L2.27 14.8a2.338 2.338 0 0 1 1.3-3.989L10.533 9.8a.337.337 0 0 0 .254-.185L13.9 3.3a2.337 2.337 0 0 1 4.193 0l3.115 6.313a.34.34 0 0 0 .254.185l6.969 1.012a2.339 2.339 0 0 1 1.3 3.989l-5.043 4.914a.339.339 0 0 0-.1.3l1.19 6.939a2.341 2.341 0 0 1-2.3 2.735zM16 24.105a2.325 2.325 0 0 1 1.088.27l6.232 3.275a.321.321 0 0 0 .356-.025.325.325 0 0 0 .135-.331l-1.191-6.94a2.343 2.343 0 0 1 .672-2.069l5.043-4.915a.338.338 0 0 0-.188-.576l-6.968-1.013a2.335 2.335 0 0 1-1.76-1.279L16.3 4.188a.338.338 0 0 0-.606 0L12.581 10.5a2.335 2.335 0 0 1-1.761 1.279l-6.967 1.015a.337.337 0 0 0-.187.576l5.042 4.915a2.343 2.343 0 0 1 .672 2.069l-1.191 6.94a.338.338 0 0 0 .492.356l6.231-3.276A2.335 2.335 0 0 1 16 24.105z"
-                              fill="#fff"
-                              data-original="#000000"
-                            />
-                          </svg>
-                          {movie.vote_average}
-                        </Text>
+                            {movie.release_date.substr(0, 4)}
+                          </Text>
 
-                        <Text
-                          as="span"
-                          color="#adadad"
-                          fontWeight="700"
-                          fontSize="13px"
-                          opacity="0.5"
-                        >
-                          0h, 00min
-                        </Text>
-                      </Flex>
-                    </Box>
+                          <Text
+                            as="span"
+                            display="flex"
+                            alignItems="center"
+                            color="#adadad"
+                            fontWeight="700"
+                            fontSize="13px"
+                            opacity="0.5"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 32 32"
+                              width="15px"
+                              height="15px"
+                              style={{
+                                marginRight: "0.5rem",
+                              }}
+                            >
+                              <path
+                                xmlns="http://www.w3.org/2000/svg"
+                                d="M23.479 29.691a2.325 2.325 0 0 1-1.089-.27l-6.233-3.276a.333.333 0 0 0-.314 0l-6.232 3.276a2.338 2.338 0 0 1-3.393-2.465l1.19-6.939a.337.337 0 0 0-.1-.3L2.27 14.8a2.338 2.338 0 0 1 1.3-3.989L10.533 9.8a.337.337 0 0 0 .254-.185L13.9 3.3a2.337 2.337 0 0 1 4.193 0l3.115 6.313a.34.34 0 0 0 .254.185l6.969 1.012a2.339 2.339 0 0 1 1.3 3.989l-5.043 4.914a.339.339 0 0 0-.1.3l1.19 6.939a2.341 2.341 0 0 1-2.3 2.735zM16 24.105a2.325 2.325 0 0 1 1.088.27l6.232 3.275a.321.321 0 0 0 .356-.025.325.325 0 0 0 .135-.331l-1.191-6.94a2.343 2.343 0 0 1 .672-2.069l5.043-4.915a.338.338 0 0 0-.188-.576l-6.968-1.013a2.335 2.335 0 0 1-1.76-1.279L16.3 4.188a.338.338 0 0 0-.606 0L12.581 10.5a2.335 2.335 0 0 1-1.761 1.279l-6.967 1.015a.337.337 0 0 0-.187.576l5.042 4.915a2.343 2.343 0 0 1 .672 2.069l-1.191 6.94a.338.338 0 0 0 .492.356l6.231-3.276A2.335 2.335 0 0 1 16 24.105z"
+                                fill="#fff"
+                                data-original="#000000"
+                              />
+                            </svg>
+                            {movie.vote_average}
+                          </Text>
+
+                          <Text
+                            as="span"
+                            color="#adadad"
+                            fontWeight="700"
+                            fontSize="13px"
+                            opacity="0.5"
+                          >
+                            0h, 00min
+                          </Text>
+                        </Flex>
+                      </Box>
+                    </Link>
                   </ListItem>
                 ))}
               </>

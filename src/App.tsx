@@ -3,14 +3,18 @@ import { ChakraBaseProvider } from "@chakra-ui/react"
 import { themeChakra } from "./styles/theme"
 import { Home } from "./page/home"
 import { Header } from "./components/header"
+import { InformationMovie } from "./page/informationMovie"
 
 function App() {
   return (
     <ChakraBaseProvider theme={themeChakra}>
-      <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/filme/online/:name/:page"
+            element={<InformationMovie />}
+          />
         </Routes>
       </BrowserRouter>
     </ChakraBaseProvider>
