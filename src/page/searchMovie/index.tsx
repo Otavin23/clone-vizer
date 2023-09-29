@@ -78,6 +78,12 @@ const SearchMovie = () => {
             </svg>
           </Flex>
 
+          {checkInputInData.length <= 0 && (
+            <Text as="span" color="#fff">
+              Sem resultados, pesquise novamente.
+            </Text>
+          )}
+
           <UnorderedList
             listStyleType="none"
             display="flex"
