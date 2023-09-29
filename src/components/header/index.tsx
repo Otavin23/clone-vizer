@@ -30,15 +30,11 @@ const Header = () => {
           justifyContent="space-between"
         >
           <Flex as="div" h="100%" alignItems="center">
-            <Box as="div">
-              <Link to="/">
-                <Image
-                  src="../../../assets/header/logo.png"
-                  w="130px"
-                  cursor="pointer"
-                />
-              </Link>
-            </Box>
+            <Link to="/">
+              <Box as="div" cursor="pointer">
+                <Image src="../../../assets/header/logo.png" w="130px" />
+              </Box>
+            </Link>
 
             <UnorderedList
               display="flex"

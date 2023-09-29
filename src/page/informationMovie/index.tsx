@@ -16,21 +16,17 @@ import { Header } from "../../components/header"
 import { useEffect, useState } from "react"
 
 const InformationMovie = () => {
-  const { name, page } = useParams()
+  const { name } = useParams()
   const [data, setData] = useState([])
 
   useEffect(() => {
     const api = async url => {
       const { data } = await axios.get(url)
-      const filterMovie = data.results.filter(movie => {
-        return movie.id === Number(name)
-      })
-
-      return setData(filterMovie[0])
+      return setData(data)
     }
 
     api(
-      `https://api.themoviedb.org/3/movie/popular?api_key=5f6d789565d22c8473d0ac958158e5e1&page=${page}`
+      `https://api.themoviedb.org/3/movie/${name}?api_key=5f6d789565d22c8473d0ac958158e5e1`
     )
   }, [])
 
@@ -42,7 +38,6 @@ const InformationMovie = () => {
     }
   )
 
-  console.log(LoadingPerson, person)
   return (
     <>
       <Header />
@@ -268,6 +263,7 @@ const InformationMovie = () => {
               m="2rem 0 0 0"
               display="flex"
               justifyContent="space-between"
+              listStyleType="none"
             >
               {person.cast.slice(0, 6).map(person => (
                 <ListItem

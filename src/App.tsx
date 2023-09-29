@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ChakraBaseProvider } from "@chakra-ui/react"
 import { themeChakra } from "./styles/theme"
 import { Home } from "./page/home"
-import { Header } from "./components/header"
 import { InformationMovie } from "./page/informationMovie"
+import { SearchMovie } from "./page/searchMovie"
 
 function App() {
   return (
@@ -11,10 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/filme/online/:name/:page"
-            element={<InformationMovie />}
-          />
+          <Route path="/filme/online/:name" element={<InformationMovie />} />
+          <Route path="/pesquisar" element={<SearchMovie />} />
         </Routes>
       </BrowserRouter>
     </ChakraBaseProvider>

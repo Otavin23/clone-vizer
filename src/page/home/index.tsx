@@ -195,7 +195,7 @@ const Home = () => {
                       transform: "scale(1.1)",
                     }}
                   >
-                    <Link to={`/filme/online/${movie.id}/${page}`}>
+                    <Link to={`/filme/online/${movie.id}`}>
                       <Box
                         as="div"
                         w="250px"
