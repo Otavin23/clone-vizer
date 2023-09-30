@@ -1,0 +1,17 @@
+::-webkit-scrollbar {
+  width: 2px;
+  border: none;
+  background: linear-gradient(40deg, #f78c1f 0, #ff2600 33%, #ffa900 69%, #f78c1f 100%);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c4c4c4;
+  border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: orange;
+  border: none;
+}

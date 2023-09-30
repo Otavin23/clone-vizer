@@ -4,6 +4,7 @@ import { themeChakra } from "./styles/theme"
 import { Home } from "./page/home"
 import { InformationMovie } from "./page/informationMovie"
 import { SearchMovie } from "./page/searchMovie"
+import "./styles/scrollbar.css"
 
 function App() {
   return (

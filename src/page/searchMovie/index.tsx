@@ -95,7 +95,7 @@ const SearchMovie = () => {
           >
             {checkInputInData.map((movie: any, index) => (
               <ListItem
-                mr="1.5rem"
+                mr={{ base: "0", lg: "1.5rem", md: "1.5rem", sm: "1.5rem" }}
                 mt="3rem"
                 width="240px"
                 pos="relative"
