@@ -45,10 +45,10 @@ const InformationMovie = () => {
       {data.length >= 0 ? (
         <Flex as="div" justifyContent="center" alignItems="center" h="700px">
           <Spinner
-            thickness="10px"
+            thickness="6px"
             speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
+            emptyColor="orange.200"
+            color="orange.500"
             w="100px"
             h="100px"
           />

@@ -235,10 +235,10 @@ const Home = () => {
                   my="3rem"
                 >
                   <Spinner
-                    thickness="10px"
+                    thickness="6px"
                     speed="0.65s"
-                    emptyColor="gray.200"
-                    color="blue.500"
+                    emptyColor="orange.200"
+                    color="orange.500"
                     w="100px"
                     h="100px"
                   />
