@@ -181,7 +181,7 @@ const Home = () => {
             <Flex
               as="div"
               alignItems="center"
-              ml="2rem"
+              ml={{ base: "0", lg: "2rem", md: "0" }}
               mt={{ base: "1.5rem", lg: "0px", md: "1.5rem" }}
             >
               <HStack
@@ -218,7 +218,7 @@ const Home = () => {
             display="flex"
             listStyleType="none"
             flexWrap="wrap"
-            justifyContent="space-between"
+            justifyContent={{ base: "center", lg: "space-between" }}
           >
             {isLoading ? (
               <>
@@ -347,7 +347,7 @@ const Home = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <UnorderedList display="flex" listStyleType="none">
+          <UnorderedList display="flex" flexWrap="wrap" listStyleType="none">
             <ListItem
               bg="rgb(24, 27, 31)"
               display="flex"
@@ -356,6 +356,7 @@ const Home = () => {
               borderRadius="0.5rem"
               color="#fff"
               mr="1rem"
+              mt="0.5rem"
               w="45px"
               h="45px"
               fontWeight="700"
@@ -378,6 +379,7 @@ const Home = () => {
               alignItems="center"
               borderRadius="0.5rem"
               color="#fff"
+              mt="0.5rem"
               mr="1rem"
               w="45px"
               h="45px"
@@ -401,6 +403,7 @@ const Home = () => {
               borderRadius="0.5rem"
               color="#fff"
               mr="1rem"
+              mt="0.5rem"
               w="45px"
               h="45px"
               fontWeight="700"
@@ -423,6 +426,7 @@ const Home = () => {
               borderRadius="0.5rem"
               color="#fff"
               mr="1rem"
+              mt="0.5rem"
               w="45px"
               h="45px"
               fontWeight="700"
@@ -445,6 +449,7 @@ const Home = () => {
               borderRadius="0.5rem"
               color="#fff"
               mr="1rem"
+              mt="0.5rem"
               w="45px"
               h="45px"
               fontWeight="700"
@@ -467,6 +472,7 @@ const Home = () => {
               borderRadius="0.5rem"
               color="#fff"
               mr="1rem"
+              mt="0.5rem"
               h="45px"
               px="1rem"
               fontWeight="700"
