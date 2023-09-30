@@ -172,7 +172,12 @@ const Home = () => {
           <Flex
             as="div"
             alignItems="center"
-            flexDirection={{ base: " column", lg: "row", md: "column" }}
+            direction={{
+              base: "column",
+              lg: "row",
+              md: "column",
+              sm: "column",
+            }}
           >
             <Heading as="h2" fontWeight="500" fontSize="22px" color="#fff">
               Assistir Filmes Online
