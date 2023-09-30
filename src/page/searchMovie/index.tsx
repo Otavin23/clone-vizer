@@ -92,7 +92,7 @@ const SearchMovie = () => {
             transition="3s"
             mb="3rem"
           >
-            {checkInputInData.map((movie, index) => (
+            {checkInputInData.map((movie: any, index) => (
               <ListItem
                 mr="1.5rem"
                 mt="3rem"

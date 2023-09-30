@@ -17,10 +17,10 @@ import { useEffect, useState } from "react"
 
 const InformationMovie = () => {
   const { name } = useParams()
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
 
   useEffect(() => {
-    const api = async url => {
+    const api = async (url: string) => {
       const { data } = await axios.get(url)
       return setData(data)
     }
@@ -265,7 +265,7 @@ const InformationMovie = () => {
               justifyContent="space-between"
               listStyleType="none"
             >
-              {person.cast.slice(0, 6).map(person => (
+              {person.cast.slice(0, 6).map((person: any) => (
                 <ListItem
                   display="flex"
                   flexDirection="column"

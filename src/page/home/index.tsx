@@ -29,7 +29,6 @@ const Home = () => {
       return data
     }
   )
-  console.log(data)
 
   const options = [
     "Lançamentos",
@@ -66,7 +65,7 @@ const Home = () => {
           bgRepeat: "no-repeat",
           bgSize: "cover",
           w: "100%",
-          h: "700px",
+          h: "860px",
           pos: "absolute",
           top: "1px",
           zIndex: "-1",
@@ -183,7 +182,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {data.results.map(movie => (
+                {data.results.map((movie: any) => (
                   <ListItem
                     mr="1.5rem"
                     mt="3rem"
@@ -194,6 +193,7 @@ const Home = () => {
                     _hover={{
                       transform: "scale(1.1)",
                     }}
+                    key={movie.id}
                   >
                     <Link to={`/filme/online/${movie.id}`}>
                       <Box

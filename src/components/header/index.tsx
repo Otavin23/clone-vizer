@@ -7,12 +7,9 @@ import {
   ListItem,
   Button,
 } from "@chakra-ui/react"
-import { useState } from "react"
-import { Navigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Header = () => {
-  const [navigate, setNavigate] = useState(false)
-
   return (
     <Flex
       as="header"
