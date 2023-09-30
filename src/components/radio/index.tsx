@@ -11,6 +11,7 @@ const RadioCard = (props: any) => {
       as="label"
       display="flex"
       mr="0.5rem"
+      w={{ base: "150px", lg: "100%", md: "100%", sm: "150px" }}
       bg="rgb(24, 27, 31)"
       borderRadius="2rem"
     >
@@ -21,13 +22,17 @@ const RadioCard = (props: any) => {
         borderRadius="2rem"
         fontSize="15px"
         boxShadow="md"
+        display="flex"
+        justifyContent="center"
+        w="100%"
         opacity="0.8"
         color="#fff"
         bg="rgb(24, 27, 31)"
         _checked={{
-          bg: "rgb(247, 140, 31)",
-          color: "#000",
+          bg: "rgb(0, 0, 0)",
+          color: "#ffffff",
           fontWeight: "700",
+          border: "2px solid #ce7e16c1",
         }}
         px={5}
         py={3}

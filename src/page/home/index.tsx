@@ -95,13 +95,30 @@ const Home = () => {
           flexDirection="column"
           alignItems="center"
         >
-          <Box as="div" mt="9rem">
-            <Image src="../assets/nameMovie.png" alt="" w="700px" />
+          <Box as="div" mt={{ base: "2rem", lg: "9rem", sm: "2rem" }}>
+            <Image
+              src="../assets/nameMovie.png"
+              alt=""
+              w={{ lg: "700px", md: "600px", sm: "500px" }}
+            />
           </Box>
 
-          <Flex as="div" mt="2rem">
+          <Flex
+            as="div"
+            mt="2rem"
+            w="100%"
+            flexDirection={{
+              base: "column",
+              lg: "row",
+              md: "row",
+              sm: "row",
+            }}
+            justifyContent="center"
+            alignItems={{ base: "center", lg: "auto" }}
+          >
             <Button
-              mr="2rem"
+              mr={{ base: "0", lg: "2rem", sm: "2rem" }}
+              mb={{ base: "1rem", lg: "0", sm: "0" }}
               bg="rgb(247, 140, 31)"
               color="#000"
               borderRadius="2rem"
@@ -152,12 +169,27 @@ const Home = () => {
 
       <Box as="section" mb="4rem">
         <Container w="95%" maxW="1600px">
-          <Flex as="div" alignItems="center">
+          <Flex
+            as="div"
+            alignItems="center"
+            flexDirection={{ base: " column", lg: "row", md: "column" }}
+          >
             <Heading as="h2" fontWeight="500" fontSize="22px" color="#fff">
               Assistir Filmes Online
             </Heading>
-            <Flex as="div" alignItems="center" ml="2rem">
-              <HStack {...group}>
+
+            <Flex
+              as="div"
+              alignItems="center"
+              ml="2rem"
+              mt={{ base: "1.5rem", lg: "0px", md: "1.5rem" }}
+            >
+              <HStack
+                {...group}
+                display="flex"
+                flexWrap="wrap"
+                justifyContent="center"
+              >
                 {options.map(value => {
                   const radio = getRadioProps({ value })
                   return (
