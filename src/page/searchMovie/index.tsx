@@ -26,7 +26,8 @@ const SearchMovie = () => {
   }
 
   const checkInputInData = data.filter((movie: any) => {
-    if (movie.original_title.toLowerCase().includes(input)) return movie
+    if (movie.original_title.toLowerCase().includes(input.toLowerCase()))
+      return movie
   })
 
   return (

@@ -7,7 +7,13 @@ const RadioCard = (props: any) => {
   const checkbox = getRadioProps()
 
   return (
-    <Box as="label" mr="0.5rem" bg="rgb(24, 27, 31)" borderRadius="2rem">
+    <Box
+      as="label"
+      display="flex"
+      mr="0.5rem"
+      bg="rgb(24, 27, 31)"
+      borderRadius="2rem"
+    >
       <input {...input} />
       <Box
         {...checkbox}
@@ -17,6 +23,7 @@ const RadioCard = (props: any) => {
         boxShadow="md"
         opacity="0.8"
         color="#fff"
+        bg="rgb(24, 27, 31)"
         _checked={{
           bg: "rgb(247, 140, 31)",
           color: "#000",

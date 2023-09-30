@@ -13,7 +13,7 @@ import {
   Spinner,
 } from "@chakra-ui/react"
 import { RadioCard } from "../../components/radio"
-import useSWR from "swr"
+import useSWR, { mutate } from "swr"
 import axios from "axios"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -22,14 +22,6 @@ import { Header } from "../../components/header"
 const Home = () => {
   const [page, setPage] = useState(1)
 
-  const { data, isLoading } = useSWR(
-    `https://api.themoviedb.org/3/movie/popular?api_key=5f6d789565d22c8473d0ac958158e5e1&page=${page}`,
-    async url => {
-      const { data } = await axios.get(url)
-      return data
-    }
-  )
-
   const options = [
     "Lançamentos",
     "Novos Filmes",
@@ -37,13 +29,37 @@ const Home = () => {
     "Mais Assistidos",
   ]
 
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "framework",
+  const { getRootProps, getRadioProps, value } = useRadioGroup({
+    name: "selectGroups",
     defaultValue: "Lançamentos",
-    onChange: console.log,
   })
 
   const group = getRootProps()
+
+  const { data, isLoading } = useSWR(
+    `https://api.themoviedb.org/3/movie/popular?api_key=5f6d789565d22c8473d0ac958158e5e1&page=${page}`,
+    async url => {
+      const { data } = await axios.get(url)
+
+      if (value === options[2]) {
+        const newResults = data.results.sort((a: any, b: any) => {
+          if (a.vote_average < b.vote_average) return -1
+        })
+
+        return { ...data, results: newResults.reverse() }
+      }
+
+      if (value === options[3]) {
+        const voteMovie = data.results.sort((a: any, b: any) => {
+          if (a.vote_count > b.vote_count) return -1
+        })
+
+        return { ...data, results: voteMovie }
+      }
+
+      return data
+    }
+  )
 
   const handlePageNext = () => {
     if (page < data.total_pages) {
@@ -58,14 +74,14 @@ const Home = () => {
       <Flex
         as="main"
         justifyContent="center"
-        h="700px"
+        h="600px"
         _before={{
           content: `" "`,
           bg: "linear-gradient(0deg, rgb(2, 2, 2) 0px, rgba(2, 2, 2, 0.96) 10%, rgba(2, 2, 2, 0.9) 22%, rgba(2, 2, 2, 0.66) 38%, rgba(2, 2, 2, 0.61) 58%, rgba(0, 0, 21, 0.76) 100%), url(../assets/background.webp)",
           bgRepeat: "no-repeat",
           bgSize: "cover",
           w: "100%",
-          h: "860px",
+          h: "850px",
           pos: "absolute",
           top: "1px",
           zIndex: "-1",
@@ -79,8 +95,8 @@ const Home = () => {
           flexDirection="column"
           alignItems="center"
         >
-          <Box as="div">
-            <Image src="../assets/nameMovie.png" alt="" w="1000px" />
+          <Box as="div" mt="9rem">
+            <Image src="../assets/nameMovie.png" alt="" w="700px" />
           </Box>
 
           <Flex as="div" mt="2rem">
@@ -140,18 +156,29 @@ const Home = () => {
             <Heading as="h2" fontWeight="500" fontSize="22px" color="#fff">
               Assistir Filmes Online
             </Heading>
-            <Box as="div" ml="2rem">
+            <Flex as="div" alignItems="center" ml="2rem">
               <HStack {...group}>
                 {options.map(value => {
                   const radio = getRadioProps({ value })
                   return (
-                    <RadioCard key={value} {...radio}>
-                      {value}
-                    </RadioCard>
+                    <div
+                      key={value}
+                      onClick={() => {
+                        setTimeout(() => {
+                          mutate(
+                            `https://api.themoviedb.org/3/movie/popular?api_key=5f6d789565d22c8473d0ac958158e5e1&page=${page}`
+                          )
+                        }, 0)
+                      }}
+                    >
+                      <RadioCard page={page} {...radio}>
+                        {value}
+                      </RadioCard>
+                    </div>
                   )
                 })}
               </HStack>
-            </Box>
+            </Flex>
           </Flex>
 
           <UnorderedList
@@ -186,7 +213,7 @@ const Home = () => {
                   <ListItem
                     mr="1.5rem"
                     mt="3rem"
-                    width="240px"
+                    width="250px"
                     pos="relative"
                     transition="0.2s"
                     cursor="pointer"
@@ -198,14 +225,20 @@ const Home = () => {
                     <Link to={`/filme/online/${movie.id}`}>
                       <Box
                         as="div"
-                        w="250px"
+                        w="100%"
                         h="350px"
                         bg={`linear-gradient(0deg,rgba(0,0,0,.9) 0,rgba(0,0,0,.7) 37%,rgba(0,0,0,0) 100%),url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`}
                         bgSize="cover"
                         borderRadius="1rem"
                       />
 
-                      <Box as="div" pos="absolute" bottom="1px" p="1rem">
+                      <Box
+                        as="div"
+                        pos="absolute"
+                        bottom="1px"
+                        p="1rem"
+                        w="100%"
+                      >
                         <Heading
                           as="h3"
                           color="#ffffff"
