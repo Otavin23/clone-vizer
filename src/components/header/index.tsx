@@ -14,7 +14,6 @@ import "../../styles/styleRandom.css"
 const Header = () => {
   const [modal, setModal] = useState(false)
 
-  console.log(modal)
   return (
     <Flex
       as="header"

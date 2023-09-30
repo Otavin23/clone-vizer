@@ -74,7 +74,7 @@ const Home = () => {
       <Flex
         as="main"
         justifyContent="center"
-        h="600px"
+        h={{ base: "450px", lg: "600px", md: "450px" }}
         _before={{
           content: `" "`,
           bg: "linear-gradient(0deg, rgb(2, 2, 2) 0px, rgba(2, 2, 2, 0.96) 10%, rgba(2, 2, 2, 0.9) 22%, rgba(2, 2, 2, 0.66) 38%, rgba(2, 2, 2, 0.61) 58%, rgba(0, 0, 21, 0.76) 100%), url(../assets/background.webp)",
